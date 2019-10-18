@@ -83,6 +83,7 @@
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>..\libtorch\include\torch\csrc\api\include;..\libtorch\include;D:\local\opencv\build\include;$(IncludePath)</IncludePath>
     <LibraryPath>..\libtorch\lib;D:\local\opencv\build\x64\vc15\lib;$(LibraryPath)</LibraryPath>
+    <ExecutablePath>$(ExecutablePath)</ExecutablePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -154,13 +155,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Model\resnet.cpp" />
+    <ClCompile Include="..\model\resnet.cpp" />
     <ClCompile Include="transfer-learning.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="general.h" />
-    <ClInclude Include="modelsimpl.h" />
-    <ClInclude Include="Model\resnet.h" />
+    <ClInclude Include="..\model\modelsimpl.h" />
+    <ClInclude Include="..\model\resnet.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
