@@ -27,6 +27,9 @@
     <ClCompile Include="..\model\resnet.cpp">
       <Filter>Model</Filter>
     </ClCompile>
+    <ClCompile Include="ImageNetDataSet.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\model\modelsimpl.h">
@@ -34,6 +37,9 @@
     </ClInclude>
     <ClInclude Include="..\model\resnet.h">
       <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageNetDataSet.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
