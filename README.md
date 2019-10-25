@@ -12,8 +12,6 @@ transfer-learning
  - Scripts
     -install.bat
     
-    Execute install.bat     
-
 Run install.bat
 It will download and install automatically.
 ```
