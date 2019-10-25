@@ -12,9 +12,12 @@ $ymlDir = Split-Path $MyDir
 
 $roboCopyCmd    = "C:\Windows\System32\robocopy.exe"
 $localCache     = "$MyDir\InstallCache"
-$3rdPartyPath   = "../3rdParty"
-$OpenCVBasePath = "../3rdParty/OpenCV"
-$LibTorchPath   = "../3rdParty/LibTorch"  
+
+$3rdPartyPath   = "D:\local"
+$OpenCVBasePath = "D:\local\OpenCV"
+$LibTorchPath   = "D:\local\LibTorch"  
+
+Write-Host $3rdPartyPath
 
 . "$MyDir\_operations"
 . "$MyDir\_verify"
