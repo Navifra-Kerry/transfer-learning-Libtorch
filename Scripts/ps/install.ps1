@@ -1,6 +1,5 @@
 ﻿[CmdletBinding()]
 Param(
-    [Parameter(Mandatory=$false)] [string] $OpenCVBasePath = "D:\local2\opencv",
     [Parameter(Mandatory=$false)] [switch] $Execute = $true,
     [Parameter(Mandatory=$false)] [switch] $NoConfirm)
 
@@ -13,6 +12,9 @@ $ymlDir = Split-Path $MyDir
 
 $roboCopyCmd    = "C:\Windows\System32\robocopy.exe"
 $localCache     = "$MyDir\InstallCache"
+$3rdPartyPath   = "../3rdParty"
+$OpenCVBasePath = "../3rdParty/OpenCV"
+$LibTorchPath   = "../3rdParty/LibTorch"  
 
 . "$MyDir\_operations"
 . "$MyDir\_verify"
