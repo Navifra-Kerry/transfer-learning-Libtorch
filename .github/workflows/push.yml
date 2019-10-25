@@ -15,10 +15,10 @@ jobs:
 
       - name: Setup Dependency
         working-directory: Scripts
-        run : call install.bat
+        run : powershell .\install.bat
 
       - name: build        
-        run : call msbuild /p:Configuration=Release transfer-learning.sln
+        run : msbuild /p:Configuration=Release transfer-learning.sln
     
 
 
