@@ -9,4 +9,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@master
+      
+      - name: Setup MSBuild.exe
+        uses: warrenbuckley/Setup-MSBuild@v1
+
+      - name: Setup Dependency
+        working-directory: Scripts
+        run : call install.bat
+
+      - name: build        
+        run : call msbuild /p:Configuration=Release transfer-learning.sln
+    
+
 
