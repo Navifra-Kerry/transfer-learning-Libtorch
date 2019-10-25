@@ -16,9 +16,6 @@
     <Filter Include="Model">
       <UniqueIdentifier>{ef7dac33-4289-4566-9ff4-41b8af2d0ffd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Libtorch">
-      <UniqueIdentifier>{a8a8e0aa-4418-4fdd-9ee1-7f03a01c619e}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="transfer-learning.cpp">

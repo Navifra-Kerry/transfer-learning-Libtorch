@@ -48,8 +48,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>..\libtorch\include\torch\csrc\api\include;..\libtorch\include;D:\local\opencv\build\include;$(IncludePath)</IncludePath>
-    <LibraryPath>..\libtorch\lib;D:\local\opencv\build\x64\vc15\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>D:\local\libtorch\include\torch\csrc\api\include;D:\local\libtorch\include;D:\local\opencv\build\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\local\libtorch\lib;D:\local\opencv\build\x64\vc15\lib;$(LibraryPath)</LibraryPath>
     <ExecutablePath>$(ExecutablePath)</ExecutablePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -88,6 +88,11 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>c10.lib;torch.lib;opencv_world410.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>copy D:\local\opencv\build\x64\vc15\bin\*.dll $(OutDir) /Y
+copy D:\local\libtorch\lib\*.dll $(OutDir) /Y
+</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\model\resnet.cpp" />
