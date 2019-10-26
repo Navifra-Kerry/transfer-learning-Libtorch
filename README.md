@@ -29,3 +29,10 @@ It will download and install automatically.
   <a href="https://github.com/kerry-Cho/transfer-learning"><img alt="GitHub Actions status" src="https://github.com/kerry-Cho/transfer-learning/blob/master/Images/Install.png"></a>
 </p>
 
+# Convert Python Model to C++
+```
+transfer-learning
+ - Model
+    convert.py
+Run Python Script
+```
