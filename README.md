@@ -12,6 +12,7 @@
 # Dependency
  * OpenCV 4.1.1
  * Libtorch 1.3
+ * CUDA 10.1
 
 Install with Scripts
 
