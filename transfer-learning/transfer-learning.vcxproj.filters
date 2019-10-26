@@ -29,9 +29,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\model\modelsimpl.h">
-      <Filter>Model</Filter>
-    </ClInclude>
     <ClInclude Include="..\model\resnet.h">
       <Filter>Model</Filter>
     </ClInclude>

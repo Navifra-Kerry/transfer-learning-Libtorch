@@ -100,7 +100,6 @@ copy D:\local\libtorch\lib\*.dll $(OutDir) /Y
     <ClCompile Include="transfer-learning.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\model\modelsimpl.h" />
     <ClInclude Include="..\model\resnet.h" />
     <ClInclude Include="ImageNetDataSet.h" />
   </ItemGroup>
