@@ -133,7 +133,7 @@ int main()
 	try
 	{
 		ResNet18 network;
-		torch::load(network, "../../Model/resnet18.pt");
+		torch::load(network, "../../Model/resnet18_Python.pt");
 
 		network->unregister_module("fc");
 
