@@ -17,8 +17,6 @@ $3rdPartyPath   = "D:\local"
 $OpenCVBasePath = "D:\local\OpenCV"
 $LibTorchPath   = "D:\local\LibTorch"  
 
-Write-Host $3rdPartyPath
-
 . "$MyDir\_operations"
 . "$MyDir\_verify"
 . "$MyDir\_download"
