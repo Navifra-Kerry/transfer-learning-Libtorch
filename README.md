@@ -10,7 +10,7 @@
 </p>
  
 # IDE
-Visual studio 2019
+ * Visual studio 2019
 
 # Dependency
  * OpenCV 4.1.1
