@@ -8,6 +8,9 @@
 <p align="left">
   <a href="https://github.com/kerry-Cho/transfer-learning"><img alt="GitHub Actions status" src="https://github.com/kerry-Cho/transfer-learning/blob/master/Images/train.png"></a>
 </p>
+
+# OS
+* Windows 10 
  
 # IDE
  * Visual studio 2019
