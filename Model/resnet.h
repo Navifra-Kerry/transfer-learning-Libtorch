@@ -25,7 +25,7 @@ namespace _resnetimpl {
 		torch::nn::Sequential downsample;
 
 		torch::nn::Conv2d conv1{ nullptr }, conv2{ nullptr };
-		torch::nn::BatchNorm bn1{ nullptr }, bn2{ nullptr };
+		torch::nn::BatchNorm2d bn1{ nullptr }, bn2{ nullptr };
 
 		static int expansion;
 
@@ -48,7 +48,7 @@ namespace _resnetimpl {
 		torch::nn::Sequential downsample;
 
 		torch::nn::Conv2d conv1{ nullptr }, conv2{ nullptr }, conv3{ nullptr };
-		torch::nn::BatchNorm bn1{ nullptr }, bn2{ nullptr }, bn3{ nullptr };
+		torch::nn::BatchNorm2d bn1{ nullptr }, bn2{ nullptr }, bn3{ nullptr };
 
 		static int expansion;
 
@@ -68,7 +68,7 @@ template <typename Block>
 struct ResNetImpl : torch::nn::Module {
 	int64_t groups, base_width, inplanes;
 	torch::nn::Conv2d conv1;
-	torch::nn::BatchNorm bn1;
+	torch::nn::BatchNorm2d bn1;
 	torch::nn::Linear fc;
 	torch::nn::Sequential layer1, layer2, layer3, layer4;
 	bool hookfeature;
@@ -96,7 +96,7 @@ torch::nn::Sequential ResNetImpl<Block>::_make_layer(
 	if (stride != 1 || inplanes != planes * Block::expansion) {
 		downsample = torch::nn::Sequential(
 			_resnetimpl::conv1x1(inplanes, planes * Block::expansion, stride),
-			torch::nn::BatchNorm(planes * Block::expansion));
+			torch::nn::BatchNorm2d(planes * Block::expansion));
 	}
 
 	torch::nn::Sequential layers;
@@ -121,7 +121,7 @@ ResNetImpl<Block>::ResNetImpl(
 	: groups(groups),
 	base_width(width_per_group),
 	inplanes(64),
-	conv1(torch::nn::Conv2dOptions(3, 64, 7).stride(2).padding(3).with_bias(
+	conv1(torch::nn::Conv2dOptions(3, 64, 7).stride(2).padding(3).bias(
 		false)),
 	bn1(64),
 	layer1(_make_layer(64, layers[0])),
@@ -143,8 +143,8 @@ ResNetImpl<Block>::ResNetImpl(
 			torch::nn::init::kaiming_normal_(
 				M->weight,
 				/*a=*/0,
-				torch::nn::init::FanMode::FanOut,
-				torch::nn::init::Nonlinearity::ReLU);
+				torch::kFanOut,
+				torch::kReLU);
 		else if (auto M = dynamic_cast<torch::nn::BatchNormImpl*>(module.get())) {
 			torch::nn::init::constant_(M->weight, 1);
 			torch::nn::init::constant_(M->bias, 0);
