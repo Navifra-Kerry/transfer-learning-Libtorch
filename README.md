@@ -38,3 +38,4 @@ transfer-learning
     convert.py
 Run Python Script
 ```
+https://blog.kerrycho.com/TransferLearning-Libtorch/
