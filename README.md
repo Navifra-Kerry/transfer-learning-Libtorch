@@ -1,4 +1,6 @@
-# LibTorch Example of transfer-learning
+# LibTorch Example of transfer-learning  
+
+https://blog.kerrycho.com/TransferLearning-Libtorch/
 
 <p align="left">
   <a href="https://github.com/kerry-Cho/transfer-learning"><img alt="GitHub Actions status" src="https://github.com/kerry-Cho/transfer-learning/workflows/Main%20workflow/badge.svg"></a>
@@ -38,4 +40,3 @@ transfer-learning
     convert.py
 Run Python Script
 ```
-https://blog.kerrycho.com/TransferLearning-Libtorch/
