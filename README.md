@@ -2,9 +2,7 @@
 
 https://blog.kerrycho.com/TransferLearning-Libtorch/
 
-<p align="left">
-  <a href="https://github.com/kerry-Cho/transfer-learning"><img alt="GitHub Actions status" src="https://github.com/kerry-Cho/transfer-learning/workflows/Main%20workflow/badge.svg"></a>
-</p>
+![C/C++ CI](https://github.com/kerry-Cho/transfer-learning-Libtorch/workflows/C/C++%20CI/badge.svg)
 
 # Example
 <p align="left">
