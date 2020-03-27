@@ -16,9 +16,6 @@ jobs:
           
     - name:  Setup MSBuild
       shell: cmd
-      run: call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x86
-            
-    - name: Core Build  
-      shell: cmd    
-      run: msbuild transfer-learning.sln /p:Platform="x64";Configuration="Release"
-       
+      run: |
+          call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x86
+          msbuild transfer-learning.sln /p:Platform="x64";Configuration="Release"
