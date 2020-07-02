@@ -145,7 +145,7 @@ ResNetImpl<Block>::ResNetImpl(
 				/*a=*/0,
 				torch::kFanOut,
 				torch::kReLU);
-		else if (auto M = dynamic_cast<torch::nn::BatchNormImpl*>(module.get())) {
+		else if (auto M = dynamic_cast<torch::nn::BatchNorm2dImpl*>(module.get())) {
 			torch::nn::init::constant_(M->weight, 1);
 			torch::nn::init::constant_(M->bias, 0);
 		}
