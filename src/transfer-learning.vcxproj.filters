@@ -21,19 +21,19 @@
     <ClCompile Include="transfer-learning.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="..\model\resnet.cpp">
-      <Filter>Model</Filter>
-    </ClCompile>
     <ClCompile Include="ImageNetDataSet.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="model\resnet.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\model\resnet.h">
+    <ClInclude Include="..\include\model\resnet.h">
       <Filter>Model</Filter>
     </ClInclude>
-    <ClInclude Include="ImageNetDataSet.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="..\include\ImageNetDataSet.h">
+      <Filter>소스 파일</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
