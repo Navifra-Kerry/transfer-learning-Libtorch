@@ -1,8 +1,8 @@
 ﻿// transfer-learning.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
 //
 
-#include "../Model/resnet.h"
-#include "ImageNetDataSet.h"
+#include <Model/resnet.h>
+#include <ImageNetDataSet.h>
 
 float best_accuracy = 0.0;
 size_t index = 0;
@@ -113,8 +113,8 @@ void test(Net network, Dataloader& loader, size_t data_size) {
 	}
 }
 
-const int64_t kTrainBatchSize = 512;
-const int64_t kTestBatchSize = 512;
+const int64_t kTrainBatchSize = 100;
+const int64_t kTestBatchSize = 100;
 const int64_t kNumberOfEpochs = 30;
 
 int main()

@@ -48,7 +48,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>D:\local\libtorch\include\torch\csrc\api\include;D:\local\libtorch\include;D:\local\opencv\build\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(IncludePath)</IncludePath>
     <LibraryPath>D:\local\libtorch\lib;D:\local\opencv\build\x64\vc15\lib;$(LibraryPath)</LibraryPath>
     <ExecutablePath>$(ExecutablePath)</ExecutablePath>
   </PropertyGroup>
@@ -78,28 +78,29 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>false</ConformanceMode>
+      <AdditionalIncludeDirectories>D:\local\libtorch\include\torch\csrc\api\include;D:\local\libtorch\include;D:\local\opencv\build\include;..\include;..\include\model</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>c10.lib;torch.lib;opencv_world411.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>c10.lib;torch.lib;c10_cuda.lib;torch_cpu.lib;torch_cuda.lib;opencv_world411.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy D:\local\opencv\build\x64\vc15\bin\*.dll $(OutDir) /Y
-copy D:\local\libtorch\lib\*.dll $(OutDir) /Y
+      <Command>copy C:\local\opencv\build\x64\vc15\bin\*.dll $(OutDir) /Y
+copy C:\local\libtorch\lib\*.dll $(OutDir) /Y
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\model\resnet.cpp" />
     <ClCompile Include="ImageNetDataSet.cpp" />
+    <ClCompile Include="model\resnet.cpp" />
     <ClCompile Include="transfer-learning.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\model\resnet.h" />
-    <ClInclude Include="ImageNetDataSet.h" />
+    <ClInclude Include="..\include\ImageNetDataSet.h" />
+    <ClInclude Include="..\include\model\resnet.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
