@@ -1,3 +1,6 @@
+#ifndef IMAGE_NET_DATA_SET_H
+#define IMAGE_NET_DATA_SET_H
+
 #pragma once
 
 #include <iostream>
@@ -38,3 +41,5 @@ public:
 		return ds_size;
 	};
 };
+
+#endif // IMAGE_NET_DATA_SET_H

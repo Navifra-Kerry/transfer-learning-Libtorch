@@ -1,15 +1,14 @@
 project(transfer-learning)
 
 cmake_minimum_required (VERSION 3.8)
+set(CMAKE_CXX_STANDARD 14)
 
-#if(WITH_CUDA)
-  enable_language(CUDA)
-  add_definitions(-D__CUDA_NO_HALF_OPERATORS__)
-#endif()
+add_definitions(-D__CUDA_NO_HALF_OPERATORS__)
 
-include_directories("./include")
-include_directories("./include/model")
+include_directories(./include)
+include_directories(./include/model)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${TORCH_CXX_FLAGS}")
+
 
 if(WIN32)
 	set(CMAKE_PREFIX_PATH "D:/local/libtorch/")

@@ -22,6 +22,7 @@ torch::Tensor read_data(std::string location) {
 	 ===========
 	 torch::Tensor type - image read as tensor
 	*/
+	std::cout << location << std::endl;
 	cv::Mat img = cv::imread(location, 1);
 	cv::resize(img, img, cv::Size(224, 224), cv::INTER_CUBIC);
 	torch::Tensor img_tensor = torch::from_blob(img.data, { img.rows, img.cols, 3 }, torch::kByte);
@@ -48,7 +49,6 @@ std::tuple<std::vector<torch::Tensor>, std::vector<torch::Tensor>> read_map(std:
 {
 	std::ifstream stream;
 	stream.open(map_file);
-
 	message_assert(stream.is_open(), "error: failed to read info file \""
 		<< map_file << "\"");
 

@@ -1,4 +1,4 @@
-#include <resnet.h>
+#include <model/resnet.h>
 
 namespace _resnetimpl {
 	torch::nn::Conv2d conv3x3(

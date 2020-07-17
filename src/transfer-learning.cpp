@@ -1,13 +1,13 @@
 ﻿// transfer-learning.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
 //
 
-#include <Model/resnet.h>
+#include <model/resnet.h>
 #include <ImageNetDataSet.h>
 
 float best_accuracy = 0.0;
-size_t index = 0;
 torch::DeviceType device_type;
-
+int Epoch = 0;
+using namespace std;
 template< typename Net,typename Dataloader>
 void train(Net network, Dataloader& data_loader, torch::optim::Optimizer& optimizer, size_t dataset_size)
 {
@@ -62,7 +62,7 @@ void train(Net network, Dataloader& data_loader, torch::optim::Optimizer& optimi
 	}
 
 	mse = mse / float(batch_index); // Take mean of loss
-	std::cout << "Epoch: " << index << ", " << "Accuracy: " << Acc / dataset_size << ", " << "MSE: " << mse << std::endl;
+	std::cout << "Epoch: " << Epoch << ", " << "Accuracy: " << Acc / dataset_size << ", " << "MSE: " << mse << std::endl;
 
 }
 
@@ -113,9 +113,9 @@ void test(Net network, Dataloader& loader, size_t data_size) {
 	}
 }
 
-const int64_t kTrainBatchSize = 100;
-const int64_t kTestBatchSize = 100;
-const int64_t kNumberOfEpochs = 30;
+const int kTrainBatchSize = 50;
+const int kTestBatchSize = 50;
+const int kNumberOfEpochs = 30;
 
 int main()
 {
@@ -134,27 +134,26 @@ int main()
 	{
 		ResNet18 network;
 		torch::load(network, "../../Model/resnet18_Python.pt");
-
 		network->unregister_module("fc");
-
 		network->fc = torch::nn::Linear(torch::nn::LinearImpl(512, 2));	
-
 		network->register_module("fc", network->fc);
-
 		network->to(device_type);
 
-		auto train_dataset = ImageNetDataSet("../../sample/train/train_map.txt") 
+		std::cout << "load complere model" << std::endl;
+
+		auto train_dataset = ImageNetDataSet("../../Sample/train/train_map.txt") 
 			.map(torch::data::transforms::Stack<>());
 		const size_t train_dataset_size = train_dataset.size().value();
 
 		auto train_loader = torch::data::make_data_loader<torch::data::samplers::RandomSampler>(std::move(train_dataset),
 			torch::data::DataLoaderOptions().batch_size(kTrainBatchSize).workers(0));
 
-		auto test_dataset = ImageNetDataSet("../../sample/test/test_map.txt")
+		auto test_dataset = ImageNetDataSet("../../Sample/test/test_map.txt")
 			.map(torch::data::transforms::Stack<>());
 		const size_t test_dataset_size = test_dataset.size().value();
 		auto test_loader = torch::data::make_data_loader(std::move(test_dataset), kTestBatchSize);
 
+		std::cout << "load complate dataset" << std::endl;
 		std::vector<torch::Tensor> trainable_params;
 		auto params = network->named_parameters(true /*recurse*/);
 		for (auto& param : params)
@@ -173,7 +172,7 @@ int main()
 
 		torch::optim::Adam opt(trainable_params, torch::optim::AdamOptions(1e-3 /*learning rate*/));
 			
-		for (index = 0; index < kNumberOfEpochs; index++)
+		for (Epoch = 0; Epoch < kNumberOfEpochs; Epoch++)
 		{
 			train(network, train_loader, opt, train_dataset_size);
 			test(network, test_loader, test_dataset_size);
