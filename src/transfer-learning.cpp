@@ -139,7 +139,7 @@ int main()
 		network->register_module("fc", network->fc);
 		network->to(device_type);
 
-		std::cout << "load complere model" << std::endl;
+		std::cout << "load complete model" << std::endl;
 
 		auto train_dataset = ImageNetDataSet("../../Sample/train/train_map.txt") 
 			.map(torch::data::transforms::Stack<>());
