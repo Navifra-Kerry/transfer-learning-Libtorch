@@ -22,7 +22,6 @@ torch::Tensor read_data(std::string location) {
 	 ===========
 	 torch::Tensor type - image read as tensor
 	*/
-	std::cout << location << std::endl;
 	cv::Mat img = cv::imread(location, 1);
 	cv::resize(img, img, cv::Size(224, 224), cv::INTER_CUBIC);
 	torch::Tensor img_tensor = torch::from_blob(img.data, { img.rows, img.cols, 3 }, torch::kByte);
